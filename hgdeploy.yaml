@@ -14,7 +14,7 @@ metadata:
   labels:
     app: hgapp3
   name: hgapp3
-  namespace: hgSpace  #use namespace
+  namespace: hgspace  #use namespace
 spec:
   replicas: 1
   selector:
