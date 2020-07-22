@@ -2,7 +2,7 @@ apiVersion: v1
 kind: Namespace
 metadata:
   creationTimestamp: null
-  name: hgSpace  #create namespace
+  name: hgspace  #create namespace
 spec: {}
 status: {}
 ---
@@ -41,7 +41,7 @@ metadata:
   labels:
     app: hgsvc3
   name: hgsvc3
-  namespace: hgSpace #use namespace
+  namespace: hgspace #use namespace
 spec:
   ports:
   - name: 2277-80
