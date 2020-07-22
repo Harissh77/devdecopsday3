@@ -1,0 +1,55 @@
+apiVersion: v1
+kind: Namespace
+metadata:
+  creationTimestamp: null
+  name: hgSpace  #create namespace
+spec: {}
+status: {}
+---
+
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  creationTimestamp: null
+  labels:
+    app: hgapp3
+  name: hgapp3
+  namespace: hgSpace  #use namespace
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: hgapp3
+  strategy: {}
+  template:
+    metadata:
+      creationTimestamp: null
+      labels:
+        app: hgapp3
+    spec:
+      containers:
+      - image: harissh77/msapp:hg001
+        name: msapp
+        resources: {}
+status: {}
+---
+
+apiVersion: v1
+kind: Service
+metadata:
+  creationTimestamp: null
+  labels:
+    app: hgsvc3
+  name: hgsvc3
+  namespace: hgSpace #use namespace
+spec:
+  ports:
+  - name: 2277-80
+    port: 2277
+    protocol: TCP
+    targetPort: 80
+  selector:
+    app: hgapp3   #matching label of pods
+  type: NodePort
+status:
+  loadBalancer: {}
